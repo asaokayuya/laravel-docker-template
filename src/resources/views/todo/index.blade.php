@@ -25,26 +25,26 @@
         </div>
       </div>
     </nav>
-    <main class="py-4">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="card">
-              <div class="card-header">
-                ToDo一覧
-              </div>
-              <div class="list-group list-group-flush">
-                @foreach ($todos as $todo)
-                  <div class="d-flex align-items-center p-2">
-                    <span class="col-9">{{ $todo->content }}</span>
-                  </div>
-                @endforeach
-              </div>
-            </div>
+<main class="py-4">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- ここから -->
+        <p class="text-left">
+          <a class="btn btn-success" href="http://localhost:8080/todo/create">ToDoを追加</a>
+        </p>
+        <!-- ここまで -->
+        <div class="card">
+          <div class="card-header">
+            ToDo一覧
+          </div>
+          <div class="list-group list-group-flush">
           </div>
         </div>
-     </div>
-    </main>
+      </div>
+    </div>
+  </div>
+</main>
   </div>
 </body>
 </html>
