@@ -21,10 +21,6 @@ class TodoController extends Controller
         // TODO: 第1引数を指定
         return view('todo.create'); // 追記
     }
-    public function store()
-    {
-        dd('新規作成のルート実行！');
-    }
 
     public function store(Request $request) // 追記
     {
