@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Todo;
+use App\Http\Requests\TodoRequest;
 
-use Illuminate\Http\Request;
+use App\Todo;
 
 class TodoController extends Controller
 {
@@ -28,10 +28,9 @@ class TodoController extends Controller
         return view('todo.create'); // 追記
     }
 
-    public function store(Request $request) // 追記
+    public function store(TodoRequest $request) // 修正
     {
         $inputs = $request->all(); // 変更
-
         $this->todo->fill($inputs); // 変更
         $this->todo->save(); // 変更
 
@@ -52,15 +51,13 @@ class TodoController extends Controller
         return view('todo.edit', ['todo' => $todo]);
     }
 
-    public function update(Request $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
+    public function update(TodoRequest $request, $id) // 修正
     {
-        // TODO: リクエストされた値を取得
         $inputs = $request->all();
-        // TODO: 更新対象のデータを取得
         $todo = $this->todo->find($id);
-        // TODO: 更新したい値の代入とUPDATE文の実行
-        $todo->fill($inputs)->save();
-
+        $todo->fill($inputs);
+        $todo->save();
+        
         return redirect()->route('todo.show', $todo->id);
     }
 
